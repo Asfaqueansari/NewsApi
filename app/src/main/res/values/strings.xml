@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">NewsApi</string>
+    <string name="author">Author</string>
+    <string name="title">Title</string>
+    <string name="ttl">Title</string>
+    <string name="tle">Title</string>
+</resources>
