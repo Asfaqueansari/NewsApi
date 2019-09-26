@@ -1,12 +1,14 @@
 package com.example.myapplication.Adapter.ViewHolder
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.Common.Parser
 import com.example.myapplication.Interface.ItemClickListener
+import com.example.myapplication.NewsDetail
 import com.example.myapplication.R
 import com.example.myapplication.model.Article
 import com.squareup.picasso.Picasso
@@ -55,7 +57,10 @@ class ListNewsAdapter(val articleList: MutableList<Article>,private val context:
         //Set event click
         holder.setItemClickListener(object : ItemClickListener{
             override fun onClick(view: View, position: Int) {
-                //will implement soon
+
+                val detail = Intent(context,NewsDetail::class.java)
+                detail.putExtra("webUrl",articleList[position].url)
+                context.startActivity(detail)
             }
 
         })

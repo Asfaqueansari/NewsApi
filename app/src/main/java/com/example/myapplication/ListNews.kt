@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.app.AlertDialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -37,7 +38,9 @@ class ListNews : AppCompatActivity() {
         swipe_to_refresh.setOnRefreshListener { loadNews(source, true) }
 
         diagonalLayout.setOnClickListener {
-            //will implement soon
+            val detail = Intent(baseContext,NewsDetail::class.java)
+            detail.putExtra("webUrl",webHotUrl)
+            startActivity(detail)
         }
 
         list_news.setHasFixedSize(true)
@@ -95,7 +98,7 @@ class ListNews : AppCompatActivity() {
                     }
 
                     override fun onResponse(call: Call<News>, response: Response<News>) {
-                        swipe_to_refresh.isRefreshing = true
+                        swipe_to_refresh.isRefreshing = false
 
                         //get first article to hot news
                         Picasso.with(baseContext)
